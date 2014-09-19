@@ -1,0 +1,33 @@
+LessonTopic:
+    type: entity
+    table: lesson_topic
+    id:
+        lessonTopicId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: lesson_topic_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        lessonId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: lesson_id
+        topicId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: topic_id
+        topicCreatedAt:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: topic_created_at
+    lifecycleCallbacks: {  }

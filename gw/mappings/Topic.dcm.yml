@@ -1,0 +1,32 @@
+Topic:
+    type: entity
+    table: topic
+    uniqueConstraints:
+        topic_name_UNIQUE:
+            columns:
+                - topic_name
+    id:
+        topicId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: topic_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        topicName:
+            type: string
+            nullable: false
+            length: 128
+            fixed: false
+            comment: ''
+            column: topic_name
+        topicCreatedAt:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: topic_created_at
+    lifecycleCallbacks: {  }

@@ -1,0 +1,32 @@
+UserLesson:
+    type: entity
+    table: user_lesson
+    id:
+        ulessonId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ulesson_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        miyagiiu:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        lessonId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: lesson_id
+        ulessonCreatedAt:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: ulesson_created_at
+    lifecycleCallbacks: {  }

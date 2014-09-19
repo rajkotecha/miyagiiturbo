@@ -1,0 +1,28 @@
+Miyagiiu:
+    type: entity
+    table: miyagiiu
+    id:
+        miyagiiuId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: miyagiiu_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        apiKey:
+            type: string
+            nullable: true
+            length: 128
+            fixed: false
+            comment: ''
+            column: api_key
+        miyagiiuCreatedAt:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: miyagiiu_created_at
+    lifecycleCallbacks: {  }

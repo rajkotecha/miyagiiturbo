@@ -1,0 +1,32 @@
+LessonType:
+    type: entity
+    table: lesson_type
+    uniqueConstraints:
+        lesson_type_name_UNIQUE:
+            columns:
+                - lesson_type_name
+    id:
+        lessonTypeId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: lesson_type_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        lessonTypeName:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: lesson_type_name
+        lessonCreatedAt:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: lesson_created_at
+    lifecycleCallbacks: {  }
