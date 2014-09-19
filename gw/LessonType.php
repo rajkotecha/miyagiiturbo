@@ -6,21 +6,32 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LessonType
+ *
+ * @ORM\Table(name="lesson_type", uniqueConstraints={@ORM\UniqueConstraint(name="lesson_type_name_UNIQUE", columns={"lesson_type_name"})})
+ * @ORM\Entity
  */
 class LessonType
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="lesson_type_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $lessonTypeId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="lesson_type_name", type="string", length=45, nullable=false)
      */
     private $lessonTypeName;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="lesson_created_at", type="datetime", nullable=false)
      */
     private $lessonCreatedAt;
 

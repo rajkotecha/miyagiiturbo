@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a40db44b5468e32215fa4764ba29003",
+    "hash": "e60eec0f4c866e551bed6ebad3f712f0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -654,6 +654,53 @@
             "time": "2014-08-14 16:10:54"
         },
         {
+            "name": "symfony/serializer",
+            "version": "2.5.x-dev",
+            "target-dir": "Symfony/Component/Serializer",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Serializer.git",
+                "reference": "f7bca262e8c9335c793ee07c682a8397089122a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Serializer/zipball/f7bca262e8c9335c793ee07c682a8397089122a6",
+                "reference": "f7bca262e8c9335c793ee07c682a8397089122a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Serializer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Serializer Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-08-05 09:00:40"
+        },
+        {
             "name": "symfony/yaml",
             "version": "2.5.x-dev",
             "target-dir": "Symfony/Component/Yaml",
@@ -706,7 +753,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/orm": 5,
-        "symfony/yaml": 20
+        "symfony/yaml": 20,
+        "symfony/serializer": 20
     },
     "prefer-stable": false,
     "platform": [],

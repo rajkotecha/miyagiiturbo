@@ -1,14 +1,16 @@
 <?php
 // cli-config.php
 require_once "bootstrap.php";
-USE Doctrine\ORM\Mapping\Driver\YamlDriver;
+use Doctrine\ORM\Mapping\Driver\YamlDriver;
+use Miyagiiweb\app\EM;
 
+$EM = new EM();
 $driver = new YamlDriver(array('./gw/mappings'));
-$config->setMetadataDriverImpl($driver);
+$EM->Config()->setMetadataDriverImpl($driver);
 
 $helperSet = new \Symfony\Component\Console\Helper\HelperSet(array(
-    'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($entityManager->getConnection()),
-    'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($entityManager)
+    'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($EM->EntityManager()->getConnection()),
+    'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($EM->EntityManager())
 ));
 
 return $helperSet;

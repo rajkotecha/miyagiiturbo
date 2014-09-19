@@ -6,26 +6,39 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LessonTopic
+ *
+ * @ORM\Table(name="lesson_topic")
+ * @ORM\Entity
  */
 class LessonTopic
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="lesson_topic_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $lessonTopicId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="lesson_id", type="integer", nullable=false)
      */
     private $lessonId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="topic_id", type="integer", nullable=false)
      */
     private $topicId;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="topic_created_at", type="datetime", nullable=false)
      */
     private $topicCreatedAt;
 
