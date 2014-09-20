@@ -8,7 +8,7 @@ class UserController {
     public function allAction () {
 
         echo "Im here now!";
-        $EM = new EM();
+        $EM = new EM("prod");
         $records = $EM->EntityManager()
             ->getRepository('Miyagiiu')
             ->findAll();
