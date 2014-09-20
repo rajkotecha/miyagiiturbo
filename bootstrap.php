@@ -48,16 +48,10 @@ class EM
     private $isDevMode = true;
     private $config = null;
 
-    function __construct() {
+    function __construct($env = "dev") {
 
         $paths = array(__DIR__ . '/gw');
-        $conn = array(
-            'driver'   => 'pdo_mysql',
-            'user'     => 'raj',
-            'host'     => 'localhost',
-            'port'     => '3306',
-            'dbname'   => 'okinawa',
-        );
+        $conn = EM::connectionFactory($env);
 
         //$this->config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/gw"), $this->isDevMode);
         $this->config = Setup::createConfiguration($this->isDevMode);
@@ -80,5 +74,30 @@ class EM
         if ($this->config == null) throw new \Exception("EntityManager was not constructed properly");
 
         return $this->config;
+    }
+
+    private static function connectionFactory($env){
+        switch($env){
+            case "dev":
+                return array (
+                    'driver'   => 'pdo_mysql',
+                    'user'     => 'raj',
+                    'host'     => 'localhost',
+                    'port'     => '3306',
+                    'dbname'   => 'okinawa',
+                );
+                break;
+
+            case "prod":
+                return array (
+                    'driver'   => 'pdo_mysql',
+                    'user'     => 'root',
+                    'password' => 'miyagiijnbhu87',
+                    'dbname'   => 'okinawa',
+                    'host'     => '173.194.106.104',
+                    'port'     => '3306',
+                );
+                break;
+        }
     }
 }
