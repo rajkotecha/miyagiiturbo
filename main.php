@@ -8,10 +8,13 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Miyagiiweb\utils\LogWriter4Slim;
+echo "Working with custom log writer....";
 
-echo "Working....";
 
-$app = new Slim();
+$app = new Slim(array(
+    'log.writer' => new LogWriter4Slim()
+));
 $uc = new UserController();
 
 $app->get('/miyagiiturbo/users', function () use ($app, $uc){

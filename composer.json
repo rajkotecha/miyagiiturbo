@@ -9,7 +9,8 @@
     "autoload": {
         "psr-4": {
             "Miyagiiweb\\controllers\\": "controllers/",
-            "": "gw/"
+            "": "gw/",
+            "Miyagiiweb\\utils\\": "utils/"
         }
     }
 }
