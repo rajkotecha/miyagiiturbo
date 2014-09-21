@@ -13,7 +13,8 @@ class UserController {
             ->getRepository('Miyagiiu')
             ->findAll();
 
-        return array('users' => $records);
+        return $records;
+        //return array('users' => $records);
         //return new Response (json_encode(array('users' => $records)));
     }
 }
