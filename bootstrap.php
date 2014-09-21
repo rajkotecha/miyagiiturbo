@@ -1,6 +1,6 @@
 <?php namespace Miyagiiweb\app;
-
 // bootstrap.php
+
 
 require_once "vendor/autoload.php";
 use Doctrine\Common\Annotations\AnnotationReader;
@@ -8,9 +8,17 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use google\appengine\api\log\LogService;
+
+//Need this for soln to work on GAE
+$http_host = $_SERVER['HTTP_HOST'];
+if (strpos($http_host,'localhost') === false) {
+    echo "detected google host";
+    $_SERVER['SERVER_PORT'] = 80;
+}
 
 /*** specify extensions that may be loaded ***/
-spl_autoload_extensions('.php');
+//spl_autoload_extensions('.php');
 
 /*** controller Loader ***/
 /*
