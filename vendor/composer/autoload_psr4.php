@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Miyagiiweb\\controllers\\' => array($baseDir . '/controllers'),
+    '' => array($baseDir . '/gw'),
 );

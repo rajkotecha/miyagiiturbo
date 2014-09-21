@@ -1,4 +1,4 @@
-<?php
+<?php namespace Miyagiiweb\controllers;
 
 require_once __DIR__ . '/../bootstrap.php';
 
@@ -8,7 +8,7 @@ class UserController {
     public function allAction () {
 
         echo "Im here now!";
-        $EM = new EM("prod");
+        $EM = new EM();
         $records = $EM->EntityManager()
             ->getRepository('Miyagiiu')
             ->findAll();

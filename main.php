@@ -3,6 +3,7 @@ require './bootstrap.php';
 require_once './vendor/autoload.php';
 
 use Slim\Slim;
+use Miyagiiweb\controllers\UserController;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;

@@ -13,7 +13,8 @@ use Doctrine\ORM\EntityManager;
 spl_autoload_extensions('.php');
 
 /*** controller Loader ***/
-function controllerLoader($class)
+/*
+ function controllerLoader($class)
 {
     $filename = strtolower($class) . '.php';
     $file = __DIR__ . '/controllers/' . $filename;
@@ -23,8 +24,11 @@ function controllerLoader($class)
     }
     include $file;
 }
+*/
+
 
 /*** controller Loader ***/
+/*
 function gatewayLoader($class)
 {
     $filename = strtolower($class) . '.php';
@@ -35,10 +39,11 @@ function gatewayLoader($class)
     }
     include $file;
 }
+*/
 
 /*** register the loader functions ***/
-spl_autoload_register('Miyagiiweb\app\controllerLoader');
-spl_autoload_register('Miyagiiweb\app\gatewayLoader');
+//spl_autoload_register('Miyagiiweb\app\controllerLoader');
+//spl_autoload_register('Miyagiiweb\app\gatewayLoader');
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
 
