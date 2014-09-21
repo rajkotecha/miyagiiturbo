@@ -8,50 +8,41 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-use google\appengine\api\log\LogService;
 
-//Need this for soln to work on GAE
-$http_host = $_SERVER['HTTP_HOST'];
-if (strpos($http_host,'localhost') === false) {
-    echo "detected google host";
-    $_SERVER['SERVER_PORT'] = 80;
-}
+class AppConfig {
+    private $env;
+    private $isRemote = false;
+    private static $AppConfig;
 
-/*** specify extensions that may be loaded ***/
-//spl_autoload_extensions('.php');
-
-/*** controller Loader ***/
-/*
- function controllerLoader($class)
-{
-    $filename = strtolower($class) . '.php';
-    $file = __DIR__ . '/controllers/' . $filename;
-    if (!file_exists($file))
-    {
-        return false;
+    private function __construct($env){
+        $this->env = $env;
+        $http_host = $_SERVER['HTTP_HOST'];
+        if (strpos($http_host,'localhost') === false) {
+            echo "detected google host";
+            $_SERVER['SERVER_PORT'] = 80;
+            $this->isRemote = true;
+        }
     }
-    include $file;
-}
-*/
 
-
-/*** controller Loader ***/
-/*
-function gatewayLoader($class)
-{
-    $filename = strtolower($class) . '.php';
-    $file = __DIR__ . '/gw/' . $filename;
-    if (!file_exists($file))
-    {
-        return false;
+    public static function AppConfigInstance($env = "dev"){
+        if (AppConfig::$AppConfig == null) {
+            self::$AppConfig = new AppConfig($env);
+        }
+        return self::$AppConfig;
     }
-    include $file;
-}
-*/
 
-/*** register the loader functions ***/
-//spl_autoload_register('Miyagiiweb\app\controllerLoader');
-//spl_autoload_register('Miyagiiweb\app\gatewayLoader');
+    public function Environment() {
+        return $this->env;
+    }
+
+    //Need this for google app engine / SLIM to play nice
+    public function isRemote() {
+        return $this->isRemote;
+    }
+}
+
+//Initialize application configuration
+AppConfig::AppConfigInstance("prod");
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
 
@@ -61,7 +52,9 @@ class EM
     private $isDevMode = true;
     private $config = null;
 
-    function __construct($env = "dev") {
+    function __construct() {
+
+        $env = AppConfig::AppConfigInstance()->Environment();
 
         $paths = array(__DIR__ . '/gw');
         $conn = EM::connectionFactory($env);
