@@ -93,14 +93,14 @@ class EM
                     'dbname'   => 'okinawa',
                 );
                 break;
-
+            // mysql:unix_socket=/cloudsql/<your-project-id>:<your-instance-name>;dbname=<database-name>',
             case "prod":
                 return array (
-                    'driver'   => 'pdo_mysql',
-                    'user'     => 'root',
-                    'dbname'   => 'okinawa',
-                    'host'     => '173.194.106.104',
-                    'port'     => '3306',
+                    'driver'        => 'pdo_mysql',
+                    'user'          => 'root',
+                    'dbname'        => 'okinawa',
+                    'unix_socket'   => '/cloudsql/miyagii-turbo:okinawa',
+                    'port'          => '3306',
                 );
                 break;
         }
