@@ -16,7 +16,7 @@ spl_autoload_extensions('.php');
 function controllerLoader($class)
 {
     $filename = strtolower($class) . '.php';
-    $file ='controllers/' . $filename;
+    $file = __DIR__ . '/controllers/' . $filename;
     if (!file_exists($file))
     {
         return false;
@@ -28,7 +28,7 @@ function controllerLoader($class)
 function gatewayLoader($class)
 {
     $filename = strtolower($class) . '.php';
-    $file ='gw/' . $filename;
+    $file = __DIR__ . '/gw/' . $filename;
     if (!file_exists($file))
     {
         return false;
