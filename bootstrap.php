@@ -98,7 +98,6 @@ class EM
                 return array (
                     'driver'   => 'pdo_mysql',
                     'user'     => 'root',
-                    'password' => 'miyagiijnbhu87',
                     'dbname'   => 'okinawa',
                     'host'     => '173.194.106.104',
                     'port'     => '3306',
