@@ -3,5 +3,13 @@
         "slim/slim": "2.4.3",
         "doctrine/orm": "2.4.0-RC2",
         "symfony/yaml": "2.5.x-dev"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Miyagiiweb\\controllers\\": "controllers/",
+            "": "gw/",
+            "Miyagiiweb\\utils\\": "utils/"
+        }
     }
 }
