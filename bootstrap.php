@@ -14,13 +14,17 @@ class AppConfig {
     private $isRemote = false;
     private static $AppConfig;
 
-    private function __construct($env){
+    private function __construct(){
         $this->env = $env;
         $http_host = $_SERVER['HTTP_HOST'];
         if (strpos($http_host,'localhost') === false) {
             echo "detected google host";
             $_SERVER['SERVER_PORT'] = 80;
             $this->isRemote = true;
+            $this->env = "prod";
+        }
+        else {
+            $this->env = "dev";
         }
     }
 
@@ -40,9 +44,6 @@ class AppConfig {
         return $this->isRemote;
     }
 }
-
-//Initialize application configuration
-AppConfig::AppConfigInstance("dev");
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
 
