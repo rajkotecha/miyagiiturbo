@@ -45,6 +45,8 @@ class AppConfig {
     }
 }
 
+AppConfig::AppConfigInstance();
+
 // Create a simple "default" Doctrine ORM configuration for Annotations
 
 class EM
