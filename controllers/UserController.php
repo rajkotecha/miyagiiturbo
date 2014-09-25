@@ -14,7 +14,5 @@ class UserController {
             ->findAll();
 
         return $records;
-        //return array('users' => $records);
-        //return new Response (json_encode(array('users' => $records)));
     }
 }

@@ -42,7 +42,7 @@ class AppConfig {
 }
 
 //Initialize application configuration
-AppConfig::AppConfigInstance("prod");
+AppConfig::AppConfigInstance("dev");
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
 
@@ -91,6 +91,7 @@ class EM
                     'host'     => 'localhost',
                     'port'     => '3306',
                     'dbname'   => 'okinawa',
+                    'password' => 'okinawazxsw23'
                 );
                 break;
             // mysql:unix_socket=/cloudsql/<your-project-id>:<your-instance-name>;dbname=<database-name>',

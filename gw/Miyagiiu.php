@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="miyagiiu")
  * @ORM\Entity
  */
-class Miyagiiu
+class Miyagiiu implements JsonSerializable
 {
     /**
      * @var integer
@@ -90,5 +90,16 @@ class Miyagiiu
     public function getMiyagiiuCreatedAt()
     {
         return $this->miyagiiuCreatedAt;
+    }
+
+    public function jsonSerialize()
+    {
+        $json  = new stdClass();
+        foreach ($this as $key => $value)
+        {
+            $json->$key = $value;
+        }
+
+        return $json;
     }
 }
