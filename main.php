@@ -25,4 +25,19 @@ $app->get('/miyagiiturbo/users', function () use ($app, $uc){
 
 });
 
+/*
+$app->put('/miyagiiturbo/user', function () use ($app, $uc){
+    $users = $uc->addUser();
+    echo "Users are here!";
+
+    foreach ($users as $user) {
+        $jsonified = json_encode($user);
+        //echo sprintf("-%s\n", $user->getApiKey());
+        echo $jsonified;
+    }
+
+});
+*/
+
+
 $app->run();

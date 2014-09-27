@@ -3,7 +3,6 @@
 
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Miyagiiu
  *
