@@ -19,8 +19,7 @@ $app->get('/miyagiiturbo/users', function () use ($app, $uc){
 
     foreach ($users as $user) {
         $jsonified = json_encode($user);
-        //echo sprintf("-%s\n", $user->getApiKey());
-        echo $jsonified;
+        echo sprintf("%s<br/>", $jsonified);
     }
 
 });

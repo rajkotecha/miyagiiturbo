@@ -10,8 +10,22 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lesson_type", uniqueConstraints={@ORM\UniqueConstraint(name="lesson_type_name_UNIQUE", columns={"lesson_type_name"})})
  * @ORM\Entity
  */
-class LessonType
+class LessonType extends \MiyagiiEntityBase
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lesson_type_name", type="string", length=45, nullable=false)
+     */
+    protected $lessonTypeName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="lesson_created_at", type="datetime", nullable=false)
+     */
+    protected $lessonCreatedAt;
+
     /**
      * @var integer
      *
@@ -19,32 +33,8 @@ class LessonType
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $lessonTypeId;
+    protected $lessonTypeId;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lesson_type_name", type="string", length=45, nullable=false)
-     */
-    private $lessonTypeName;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="lesson_created_at", type="datetime", nullable=false)
-     */
-    private $lessonCreatedAt;
-
-
-    /**
-     * Get lessonTypeId
-     *
-     * @return integer 
-     */
-    public function getLessonTypeId()
-    {
-        return $this->lessonTypeId;
-    }
 
     /**
      * Set lessonTypeName
@@ -90,5 +80,15 @@ class LessonType
     public function getLessonCreatedAt()
     {
         return $this->lessonCreatedAt;
+    }
+
+    /**
+     * Get lessonTypeId
+     *
+     * @return integer 
+     */
+    public function getLessonTypeId()
+    {
+        return $this->lessonTypeId;
     }
 }

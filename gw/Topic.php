@@ -10,8 +10,22 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="topic", uniqueConstraints={@ORM\UniqueConstraint(name="topic_name_UNIQUE", columns={"topic_name"})})
  * @ORM\Entity
  */
-class Topic
+class Topic extends \MiyagiiEntityBase
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="topic_name", type="string", length=128, nullable=false)
+     */
+    protected $topicName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="topic_created_at", type="datetime", nullable=false)
+     */
+    protected $topicCreatedAt;
+
     /**
      * @var integer
      *
@@ -19,32 +33,8 @@ class Topic
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $topicId;
+    protected $topicId;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="topic_name", type="string", length=128, nullable=false)
-     */
-    private $topicName;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="topic_created_at", type="datetime", nullable=false)
-     */
-    private $topicCreatedAt;
-
-
-    /**
-     * Get topicId
-     *
-     * @return integer 
-     */
-    public function getTopicId()
-    {
-        return $this->topicId;
-    }
 
     /**
      * Set topicName
@@ -90,5 +80,15 @@ class Topic
     public function getTopicCreatedAt()
     {
         return $this->topicCreatedAt;
+    }
+
+    /**
+     * Get topicId
+     *
+     * @return integer 
+     */
+    public function getTopicId()
+    {
+        return $this->topicId;
     }
 }

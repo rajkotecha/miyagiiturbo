@@ -10,8 +10,29 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lesson_topic")
  * @ORM\Entity
  */
-class LessonTopic
+class LessonTopic extends \MiyagiiEntityBase
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lesson_id", type="integer", nullable=false)
+     */
+    protected $lessonId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="topic_id", type="integer", nullable=false)
+     */
+    protected $topicId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="topic_created_at", type="datetime", nullable=false)
+     */
+    protected $topicCreatedAt;
+
     /**
      * @var integer
      *
@@ -19,39 +40,8 @@ class LessonTopic
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $lessonTopicId;
+    protected $lessonTopicId;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lesson_id", type="integer", nullable=false)
-     */
-    private $lessonId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="topic_id", type="integer", nullable=false)
-     */
-    private $topicId;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="topic_created_at", type="datetime", nullable=false)
-     */
-    private $topicCreatedAt;
-
-
-    /**
-     * Get lessonTopicId
-     *
-     * @return integer 
-     */
-    public function getLessonTopicId()
-    {
-        return $this->lessonTopicId;
-    }
 
     /**
      * Set lessonId
@@ -120,5 +110,15 @@ class LessonTopic
     public function getTopicCreatedAt()
     {
         return $this->topicCreatedAt;
+    }
+
+    /**
+     * Get lessonTopicId
+     *
+     * @return integer 
+     */
+    public function getLessonTopicId()
+    {
+        return $this->lessonTopicId;
     }
 }

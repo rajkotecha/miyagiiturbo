@@ -7,11 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserLesson
  *
- * @ORM\Table(name="user_lesson")
+ * @ORM\Table(name="user_lesson", indexes={@ORM\Index(name="FK_USERID_idx", columns={"user_id"}), @ORM\Index(name="FK_LESSONID_idx", columns={"lesson_id"})})
  * @ORM\Entity
  */
-class UserLesson
+class UserLesson extends \MiyagiiEntityBase
 {
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ulesson_created_at", type="datetime", nullable=false)
+     */
+    protected $ulessonCreatedAt;
+
     /**
      * @var integer
      *
@@ -19,85 +26,28 @@ class UserLesson
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $ulessonId;
+    protected $ulessonId;
 
     /**
-     * @var integer
+     * @var \User
      *
-     * @ORM\Column(name="miyagiiu", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
+     * })
      */
-    private $miyagiiu;
+    protected $user;
 
     /**
-     * @var integer
+     * @var \Lesson
      *
-     * @ORM\Column(name="lesson_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Lesson")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="lesson_id", referencedColumnName="lesson_id")
+     * })
      */
-    private $lessonId;
+    protected $lesson;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="ulesson_created_at", type="datetime", nullable=false)
-     */
-    private $ulessonCreatedAt;
-
-
-    /**
-     * Get ulessonId
-     *
-     * @return integer 
-     */
-    public function getUlessonId()
-    {
-        return $this->ulessonId;
-    }
-
-    /**
-     * Set miyagiiu
-     *
-     * @param integer $miyagiiu
-     * @return UserLesson
-     */
-    public function setMiyagiiu($miyagiiu)
-    {
-        $this->miyagiiu = $miyagiiu;
-
-        return $this;
-    }
-
-    /**
-     * Get miyagiiu
-     *
-     * @return integer 
-     */
-    public function getMiyagiiu()
-    {
-        return $this->miyagiiu;
-    }
-
-    /**
-     * Set lessonId
-     *
-     * @param integer $lessonId
-     * @return UserLesson
-     */
-    public function setLessonId($lessonId)
-    {
-        $this->lessonId = $lessonId;
-
-        return $this;
-    }
-
-    /**
-     * Get lessonId
-     *
-     * @return integer 
-     */
-    public function getLessonId()
-    {
-        return $this->lessonId;
-    }
 
     /**
      * Set ulessonCreatedAt
@@ -120,5 +70,61 @@ class UserLesson
     public function getUlessonCreatedAt()
     {
         return $this->ulessonCreatedAt;
+    }
+
+    /**
+     * Get ulessonId
+     *
+     * @return integer 
+     */
+    public function getUlessonId()
+    {
+        return $this->ulessonId;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \User $user
+     * @return UserLesson
+     */
+    public function setUser(\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set lesson
+     *
+     * @param \Lesson $lesson
+     * @return UserLesson
+     */
+    public function setLesson(\Lesson $lesson = null)
+    {
+        $this->lesson = $lesson;
+
+        return $this;
+    }
+
+    /**
+     * Get lesson
+     *
+     * @return \Lesson 
+     */
+    public function getLesson()
+    {
+        return $this->lesson;
     }
 }

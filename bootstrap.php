@@ -15,13 +15,17 @@ class AppConfig {
     private static $AppConfig;
 
     private function __construct(){
-        $this->env = $env;
-        $http_host = $_SERVER['HTTP_HOST'];
-        if (strpos($http_host,'localhost') === false) {
-            echo "detected google host";
-            $_SERVER['SERVER_PORT'] = 80;
-            $this->isRemote = true;
-            $this->env = "prod";
+
+        if (array_key_exists('HTTP_HOST', $_SERVER)) {
+            $http_host = $_SERVER['HTTP_HOST'];
+            if (strpos($http_host, 'localhost') === false) {
+                echo "detected google host";
+                $_SERVER['SERVER_PORT'] = 80;
+                $this->isRemote = true;
+                $this->env = "prod";
+            } else {
+                $this->env = "dev";
+            }
         }
         else {
             $this->env = "dev";
@@ -62,7 +66,6 @@ class EM
         $paths = array(__DIR__ . '/gw');
         $conn = EM::connectionFactory($env);
 
-        //$this->config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/gw"), $this->isDevMode);
         $this->config = Setup::createConfiguration($this->isDevMode);
         $driver = new AnnotationDriver(new AnnotationReader(), $paths);
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Miyagiiu" table="miyagiiu">
+    <id name="miyagiiuId" type="integer" column="miyagiiu_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="apiKey" type="string" column="api_key" length="128" nullable="true"/>
+    <field name="miyagiiuCreatedAt" type="datetime" column="miyagiiu_created_at" nullable="false"/>
+  </entity>
+</doctrine-mapping>

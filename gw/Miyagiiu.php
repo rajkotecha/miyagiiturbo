@@ -3,14 +3,29 @@
 
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Miyagiiu
  *
  * @ORM\Table(name="miyagiiu")
  * @ORM\Entity
  */
-class Miyagiiu implements JsonSerializable
+class Miyagiiu extends \MiyagiiEntityBase
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="api_key", type="string", length=128, nullable=true)
+     */
+    protected $apiKey;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="miyagiiu_created_at", type="datetime", nullable=false)
+     */
+    protected $miyagiiuCreatedAt;
+
     /**
      * @var integer
      *
@@ -18,32 +33,8 @@ class Miyagiiu implements JsonSerializable
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $miyagiiuId;
+    protected $miyagiiuId;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="api_key", type="string", length=128, nullable=true)
-     */
-    private $apiKey;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="miyagiiu_created_at", type="datetime", nullable=false)
-     */
-    private $miyagiiuCreatedAt;
-
-
-    /**
-     * Get miyagiiuId
-     *
-     * @return integer 
-     */
-    public function getMiyagiiuId()
-    {
-        return $this->miyagiiuId;
-    }
 
     /**
      * Set apiKey
@@ -91,14 +82,13 @@ class Miyagiiu implements JsonSerializable
         return $this->miyagiiuCreatedAt;
     }
 
-    public function jsonSerialize()
+    /**
+     * Get miyagiiuId
+     *
+     * @return integer 
+     */
+    public function getMiyagiiuId()
     {
-        $json  = new stdClass();
-        foreach ($this as $key => $value)
-        {
-            $json->$key = $value;
-        }
-
-        return $json;
+        return $this->miyagiiuId;
     }
 }

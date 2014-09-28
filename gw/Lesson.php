@@ -10,8 +10,36 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lesson")
  * @ORM\Entity
  */
-class Lesson
+class Lesson extends \MiyagiiEntityBase
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lesson_type_id", type="integer", nullable=false)
+     */
+    protected $lessonTypeId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lesson_pageurl", type="string", length=2083, nullable=false)
+     */
+    protected $lessonPageurl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lesson_detail", type="text", nullable=false)
+     */
+    protected $lessonDetail;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="lesson_created_at", type="datetime", nullable=false)
+     */
+    protected $lessonCreatedAt;
+
     /**
      * @var integer
      *
@@ -19,46 +47,8 @@ class Lesson
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $lessonId;
+    protected $lessonId;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lesson_type_id", type="integer", nullable=false)
-     */
-    private $lessonTypeId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lesson_pageurl", type="string", length=2083, nullable=false)
-     */
-    private $lessonPageurl;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lesson_detail", type="text", nullable=false)
-     */
-    private $lessonDetail;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="lesson_created_at", type="datetime", nullable=false)
-     */
-    private $lessonCreatedAt;
-
-
-    /**
-     * Get lessonId
-     *
-     * @return integer 
-     */
-    public function getLessonId()
-    {
-        return $this->lessonId;
-    }
 
     /**
      * Set lessonTypeId
@@ -150,5 +140,15 @@ class Lesson
     public function getLessonCreatedAt()
     {
         return $this->lessonCreatedAt;
+    }
+
+    /**
+     * Get lessonId
+     *
+     * @return integer 
+     */
+    public function getLessonId()
+    {
+        return $this->lessonId;
     }
 }
