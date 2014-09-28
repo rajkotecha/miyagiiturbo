@@ -35,6 +35,20 @@ class User extends \MiyagiiEntityBase
      */
     protected $userId;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="UserLesson", mappedBy="user_id")
+     */
+    protected $UserLesson;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->UserLesson = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set username
@@ -90,5 +104,38 @@ class User extends \MiyagiiEntityBase
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * Add UserLesson
+     *
+     * @param \UserLesson $userLesson
+     * @return User
+     */
+    public function addUserLesson(\UserLesson $userLesson)
+    {
+        $this->UserLesson[] = $userLesson;
+
+        return $this;
+    }
+
+    /**
+     * Remove UserLesson
+     *
+     * @param \UserLesson $userLesson
+     */
+    public function removeUserLesson(\UserLesson $userLesson)
+    {
+        $this->UserLesson->removeElement($userLesson);
+    }
+
+    /**
+     * Get UserLesson
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserLesson()
+    {
+        return $this->UserLesson;
     }
 }
