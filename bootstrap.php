@@ -2,7 +2,7 @@
 // bootstrap.php - need to recommit....
 
 
-require_once "vendor/autoload.php";
+require_once "./vendor/autoload.php";
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
