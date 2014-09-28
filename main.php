@@ -4,7 +4,7 @@ require './bootstrap.php';
 use Slim\Slim;
 use Miyagiiweb\controllers\UserController;
 use Miyagiiweb\utils\LogWriter4Slim;
-//echo "Working with custom log writer....";
+//echo "Working with custom log writer...."; Random change to trigger GAE deploy ....
 
 
 $app = new Slim(array(
