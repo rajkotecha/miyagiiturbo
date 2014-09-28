@@ -8,7 +8,7 @@ use Miyagiiu;
 class UserController {
     public function allAction () {
 
-        echo "Im here now!";
+        //echo "Im here now!";
         $EM = new EM();
         $records = $EM->EntityManager()
             ->getRepository('Miyagiiu')
@@ -17,14 +17,9 @@ class UserController {
         return $records;
     }
 
-    public function addUser () {
+    public function addUser ($addUser) {
         $EM = new EM();
-
-        $user = new Miyagiiu();
-        $user->setApiKey("ApiKey1234CreatedYaay");
-        $now = new \DateTime("now", new \DateTimeZone("America/Toronto"));
-        $user->setMiyagiiuCreatedAt($now);
-        $EM->EntityManager()->persist($user);
+        $EM->EntityManager()->persist($addUser);
         $EM->EntityManager()->flush();
     }
 }
