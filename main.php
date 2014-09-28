@@ -32,7 +32,7 @@ $app->post('/miyagiiturbo/user', function () use ($app, $uc){
     $addUser = new Miyagiiu();
     $addUser->setApiKey($input->apiKey);
     $users = $uc->addUser($addUser);
-    //echo "add Users are here!";
+    echo "add Users are here!";
 
 });
 
